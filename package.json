@@ -15,8 +15,8 @@
     "riot"
   ],
   "scripts": {
-    "test": "tape test/*.js | tspec",
-    "build": "echo No build task specified."
+    "build": "echo No build task specified.",
+    "test": "tape test | tspec"
   },
   "author": {
     "name": "Luke Edwards",
