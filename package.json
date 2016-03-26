@@ -1,0 +1,36 @@
+{
+  "name": "fly-riot",
+  "version": "0.0.0",
+  "description": "Riot compiler plugin for Fly.",
+  "license": "MIT",
+  "repository": "https://github.com/lukeed/fly-riot",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "fly",
+    "fly-plugin",
+    "compiler",
+    "riot"
+  ],
+  "scripts": {
+    "test": "tape test/*.js | tspec",
+    "build": "echo No build task specified."
+  },
+  "author": {
+    "name": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "https://lukeed.com"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "tap-spec": "^4.1.1",
+    "tape": "^4.2.2"
+  },
+  "engines": {
+    "iojs": ">= 1.0.0",
+    "node": ">= 0.12.0"
+  }
+}
