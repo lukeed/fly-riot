@@ -1,6 +1,6 @@
 {
   "name": "fly-riot",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Riot compiler plugin for Fly.",
   "license": "MIT",
   "repository": "https://github.com/lukeed/fly-riot",
