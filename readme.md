@@ -1,42 +1,39 @@
-<div align="center">
-	<a href="http://github.com/flyjs/fly">
-		<img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
-	</a>
-</div>
+# fly-riot [![][travis-badge]][travis-link] [![npm package][npm-ver-link]][npm-pkg-link]
 
 > Riot compiler plugin for Fly.
 
-[![][fly-badge]][fly]
-[![npm package][npm-ver-link]][releases]
-[![][dl-badge]][npm-pkg-link]
-[![][travis-badge]][travis-link]
-
 ## Install
 
-```a
-npm install -D fly-riot
+```
+npm install --save-dev fly-riot
 ```
 
 ## Usage
 
 ```js
 exports.riot = function * () {
-	yield this.source('tags/**/*.html')
-		.riot().concat('templates.js')
+	yield this.source('src/**/*.tag')
+		.riot()
+		.concat('templates.js') // requires fly-concat!
 		.target('dist/js');
 }
 ```
+
+## API
+
+### .riot()
+
+All matching files will be compiled to JavaScript & be converted to a `.js` file type.
+
+> **Recommended:** You should concatenate all your compiled tags, as seen in the [example](#usage) above. To achieve this, you must install the [`fly-concat`](https://github.com/lukeed/fly-concat) plugin.
+
+There are no options for this plugin.
 
 ## License
 
 MIT © [Luke Edwards](https://lukeed.com)
 
-[contributors]: https://github.com/lukeed/fly-riot/graphs/contributors
-[releases]:     https://github.com/lukeed/fly-riot/releases
-[fly]:          https://www.github.com/flyjs/fly 
-[fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
 [npm-pkg-link]: https://www.npmjs.org/package/fly-riot
 [npm-ver-link]: https://img.shields.io/npm/v/fly-riot.svg?style=flat-square
-[dl-badge]:     http://img.shields.io/npm/dm/fly-riot.svg?style=flat-square
 [travis-link]:  https://travis-ci.org/lukeed/fly-riot
 [travis-badge]: http://img.shields.io/travis/lukeed/fly-riot.svg?style=flat-square
