@@ -11,8 +11,8 @@ npm install --save-dev fly-riot
 ## Usage
 
 ```js
-exports.riot = function * () {
-	yield this.source('src/**/*.tag')
+exports.tags = function * (fly) {
+	yield fly.source('src/**/*.tag')
 		.riot()
 		.concat('templates.js') // requires fly-concat!
 		.target('dist/js');
