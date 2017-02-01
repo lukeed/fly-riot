@@ -1,7 +1,7 @@
 'use strict';
 
-const join = require('path').join;
-const test = require('tape').test;
+const {join} = require('path');
+const test = require('tape');
 const Fly = require('fly');
 
 const dir = join(__dirname, 'fixtures');
@@ -11,25 +11,26 @@ test('fly-riot', t => {
 	t.plan(3);
 
 	const fly = new Fly({
-		plugins: [{
-			func: require('../')
-		}],
+		plugins: [
+			require('../'),
+			require('fly-clear')
+		],
 		tasks: {
-			a: function * () {
-				t.ok('riot' in fly, 'attach the `riot()` plugin to fly');
+			* foo(f) {
+				t.ok('riot' in fly.plugins, 'attach the `riot()` plugin to fly');
 
-				yield this.source(`${dir}/foo.tag`).riot().target(tmp);
+				yield f.source(`${dir}/foo.tag`).riot().target(tmp);
 
-				const str = yield this.$.read(`${tmp}/foo.js`, 'utf8');
-				const want = yield this.$.read(`${dir}/bar.js`, 'utf8');
+				const str = yield f.$.read(`${tmp}/foo.js`, 'utf8');
+				const want = yield f.$.read(`${dir}/bar.js`, 'utf8');
 
 				t.ok(str, 'create a `.js` file');
 				t.equal(str, want, 'compile the `.tag` file correctly');
 
-				yield this.clear(tmp);
+				yield f.clear(tmp);
 			}
 		}
 	});
 
-	fly.start('a');
+	fly.start('foo');
 });
